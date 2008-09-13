@@ -1,6 +1,7 @@
 autoload -U compinit
 compinit
 
+source $HOME/.zsh/scripts/search.sh
 setopt auto_pushd
 setopt hist_ignore_dups
 
@@ -14,6 +15,7 @@ export JRUBY_HOME=/opt/jruby
 export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:$JRUBY_HOME/bin:/opt/flex3/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
+export GIT_EDITOR='vim'
 
 alias ll='ls -l'
 alias la='ls -a'
@@ -22,32 +24,6 @@ alias sshx='ssh -X'
 alias :q='exit'
 alias reload='exec zsh'
 
-alias vim='/opt/local/bin/vim'
 alias sqlite='sqlite3'
-alias ruby='/opt/local/bin/ruby'
-alias gem='/opt/local/bin/gem'
 
 bindkey -v
-
-case "${TERM}" in
-xterm*)
-    precmd() {
-        echo -ne "\033]0;${USER}@${HOST%%.*}\007"
-    }
-    ;;
-esac
-
-case "${HOST}" in
-*book.local)
-    precmd() {
-    echo -ne "\033]0;${USER}@localhost\007"
-    }
-esac
-
-function rm() {
-  mv $* ~/.Trash
-}
-
-if [ $SHLVL = 1 ];then
-  screen -U
-fi
