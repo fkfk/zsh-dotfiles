@@ -1,18 +1,28 @@
 autoload -U compinit
 compinit
 
+source $HOME/.zsh/scripts/cdd.sh
 source $HOME/.zsh/scripts/search.sh
+
 setopt auto_pushd
 setopt hist_ignore_dups
 
 unset PS1
 
-RPROMPT="%{[32m%}[%/]%{[m%}"
-PROMPT="%{[32m%}>%{[m%}%{[m%} "
+case "${TERM}" in
+  xterm*) 
+    RPROMPT="%{[32m%}[%/]%{[m%}"
+    PROMPT="%{[32m%}>%{[m%}%{[m%} "
+  ;;
+  #MacVim¤Ç:sh¤·¤¿¤È¤­¤ÎºÇÄã¸Â¤Î¥×¥í¥ó¥×¥ÈÀßÄê
+  dumb)
+    PROMPT="> "
+  ;;
+esac
 
 export LANG=ja_JP.UTF-8
 export JRUBY_HOME=/opt/jruby
-export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:$JRUBY_HOME/bin:/opt/flex3/bin:$PATH
+export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:$JRUBY_HOME/bin:/opt/flex3/bin:/usr/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
 export GIT_EDITOR='vim'
@@ -23,7 +33,11 @@ alias lla='ls -al'
 alias sshx='ssh -X'
 alias :q='exit'
 alias reload='exec zsh'
-
 alias sqlite='sqlite3'
+alias qgit=$HOME/bin/qgit.app/Contents/MacOS/qgit
 
 bindkey -v
+
+function chpwd() {
+  _reg_pwd_screennum
+}
