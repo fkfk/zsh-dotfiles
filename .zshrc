@@ -10,13 +10,13 @@ setopt hist_ignore_dups
 unset PS1
 
 case "${TERM}" in
-  xterm*) 
-    RPROMPT="%{[32m%}[%/]%{[m%}"
-    PROMPT="%{[32m%}>%{[m%}%{[m%} "
-  ;;
-  #MacVim¤Ç:sh¤·¤¿¤È¤­¤ÎºÇÄã¸Â¤Î¥×¥í¥ó¥×¥ÈÀßÄê
+  #MacVimã§:shã—ãŸã¨ãã®æœ€ä½Žé™ã®ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆè¨­å®š
   dumb)
     PROMPT="> "
+  ;;
+  *) 
+    RPROMPT="%{[32m%}[%/]%{[m%}"
+    PROMPT="%{[32m%}>%{[m%}%{[m%} "
   ;;
 esac
 
