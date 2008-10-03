@@ -4,7 +4,6 @@ compinit
 #functionの設定
 source $HOME/.zsh/scripts/cdd.sh
 source $HOME/.zsh/scripts/search.sh
-source $HOME/.zsh/scripts/e.sh
 
 setopt auto_pushd
 setopt hist_ignore_dups
@@ -37,7 +36,7 @@ alias lla='ls -al'
 alias sshx='ssh -X'
 alias :q='exit'
 alias :wq='screen -d'
-#alias :e='screen -r'
+alias :e='screen -r'
 alias reload='exec zsh'
 alias sqlite='sqlite3'
 alias qgit=$HOME/bin/qgit.app/Contents/MacOS/qgit
