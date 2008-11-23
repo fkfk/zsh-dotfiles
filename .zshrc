@@ -4,6 +4,9 @@ compinit
 #functionの設定
 source $HOME/.zsh/scripts/cdd.sh
 source $HOME/.zsh/scripts/search.sh
+source $HOME/.zsh/scripts/merb-gen.sh
+source $HOME/.zsh/scripts/rake.sh
+source $HOME/.zsh/scripts/capistrano.sh
 
 setopt auto_pushd
 setopt hist_ignore_dups

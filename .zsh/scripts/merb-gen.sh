@@ -1,0 +1,4 @@
+_merb-gen () {
+  compadd `merb-gen | grep '^  *' | awk '{print \$1}' | xargs`
+}
+compdef _merb-gen merb-gen
