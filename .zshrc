@@ -42,7 +42,6 @@ alias :wq='screen -d'
 alias :e='screen -r'
 alias reload='exec zsh'
 alias sqlite='sqlite3'
-alias qgit=$HOME/bin/qgit.app/Contents/MacOS/qgit
 
 #viモード
 bindkey -v
