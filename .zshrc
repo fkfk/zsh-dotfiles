@@ -1,6 +1,9 @@
 autoload -U compinit
 compinit
 
+autoload -U colors
+colors
+
 #functionの設定
 source $HOME/.zsh/scripts/cdd.sh
 source $HOME/.zsh/scripts/search.sh
@@ -11,6 +14,8 @@ source $HOME/.zsh/scripts/sub.sh
 
 setopt auto_pushd
 setopt hist_ignore_dups
+setopt list_packed
+setopt correct
 
 unset PS1
 
@@ -26,8 +31,7 @@ esac
 
 #環境変数セット
 export LANG=ja_JP.UTF-8
-export JRUBY_HOME=/opt/jruby
-export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:$JRUBY_HOME/bin:/opt/flex3/bin:/usr/local/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:/opt/flex3/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
 export EDITOR='vim'
