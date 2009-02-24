@@ -22,5 +22,5 @@ function sub()
     echo usage: sub PATTERN REPLACE [FILE [DIR]]
   ;;
   esac
-  for FILE in `find . -type f -name "$target" -exec grep -l $pattern \{\} \;` ; do perl -p -i -e "s/$pattern/$replace/g" $FILE; done
+  for FILE in `find . -type f -name "$target" -exec grep -l $pattern \{\} \;` ; do ruby -Ks -pi -e "gsub(/$pattern/,'$replace')" $FILE; done
 }
