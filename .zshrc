@@ -7,6 +7,7 @@ source $HOME/.zsh/scripts/search.sh
 source $HOME/.zsh/scripts/merb-gen.sh
 source $HOME/.zsh/scripts/rake.sh
 source $HOME/.zsh/scripts/capistrano.sh
+source $HOME/.zsh/scripts/sub.sh
 
 setopt auto_pushd
 setopt hist_ignore_dups
@@ -31,6 +32,7 @@ export MANPATH=/opt/local/man:$MANPATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
 export EDITOR='vim'
 export GIT_EDITOR='vim'
+export XDG_DATA_DIRS=/opt/local/share
 
 #alias設定
 alias ll='ls -l'
