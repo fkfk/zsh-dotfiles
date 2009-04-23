@@ -31,12 +31,30 @@ esac
 
 #環境変数セット
 export LANG=ja_JP.UTF-8
-export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:/opt/flex3/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
 export EDITOR='vim'
 export GIT_EDITOR='vim'
+export PAGER='lv'
 export XDG_DATA_DIRS=/opt/local/share
+export GISTY_DIR=$HOME/src/gists
+
+#jrubyディレクトリがあったらそれを追加
+#if test -d "/opt/jruby"; then
+#  export JRUBY_HOME=/opt/jruby
+#  export PATH=$PATH:$JRUBY_HOME/bin
+#fi
+
+#flex3ディレクトリがあったらそれを追加
+if test -d "/opt/flex3"; then
+  export PATH=$PATH:/opt/flex3/bin
+fi
+
+#appengine-java-sdkがあったらそれを追加
+if test -d "/opt/appengine-java-sdk-1.2.0"; then
+  export PATH=$PATH:/opt/appengine-java-sdk-1.2.0/bin
+fi
 
 #alias設定
 alias ll='ls -l'
@@ -78,4 +96,17 @@ function chpwd() {
   #gitブランチ表示用
   _set_env_git_current_branch
   _update_rprompt
+}
+
+#port searchに--lineオプション追加をデフォルトに
+function port() {
+  case $1 in
+    search) /opt/local/bin/port search --line $2;;
+    *) /opt/local/bin/port $*;;
+  esac
+}
+
+#source-highlightを通してlvをsyntax highlight対応させる
+function lvc() {
+  source-highlight -f esc -o STDOUT $1 | lv -c
 }
