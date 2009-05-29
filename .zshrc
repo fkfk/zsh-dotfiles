@@ -36,7 +36,7 @@ export MANPATH=/opt/local/man:$MANPATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
 export EDITOR='vim'
 export GIT_EDITOR='vim'
-export PAGER='lv'
+export PAGER='less'
 export XDG_DATA_DIRS=/opt/local/share
 export GISTY_DIR=$HOME/src/gists
 
@@ -66,6 +66,10 @@ alias :wq='screen -d'
 alias :e='screen -r'
 alias reload='exec zsh'
 alias sqlite='sqlite3'
+
+if test "/opt/local/bin/gnutar"; then
+  alias tar='gnutar'
+fi
 
 #viモード
 bindkey -v
