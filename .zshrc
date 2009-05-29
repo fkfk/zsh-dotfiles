@@ -67,7 +67,7 @@ alias :e='screen -r'
 alias reload='exec zsh'
 alias sqlite='sqlite3'
 
-if test "/opt/local/bin/gnutar"; then
+if test -e "/opt/local/bin/gnutar"; then
   alias tar='gnutar'
 fi
 
