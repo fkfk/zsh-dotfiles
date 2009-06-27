@@ -39,6 +39,7 @@ export GIT_EDITOR='vim'
 export PAGER='less'
 export XDG_DATA_DIRS=/opt/local/share
 export GISTY_DIR=$HOME/src/gists
+export RUBYOPT='-rubygems'
 
 #jrubyディレクトリがあったらそれを追加
 #if test -d "/opt/jruby"; then
@@ -54,6 +55,11 @@ fi
 #appengine-java-sdkがあったらそれを追加
 if test -d "/opt/appengine-java-sdk-1.2.0"; then
   export PATH=$PATH:/opt/appengine-java-sdk-1.2.0/bin
+fi
+
+if test -d "$HOME/.gem/"; then
+  GEM_BIN_DIR=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$HOME/.gem/jruby/1.8/bin
+  export PATH=$PATH:$GEM_BIN_DIR
 fi
 
 #alias設定
@@ -87,11 +93,21 @@ function _update_rprompt () {
     RPROMPT="%{[32m%}[%/]%{[m%}"
   fi
 }
- 
+
+#screenのwindows名を変更
+function _set_window_name_pwd () {
+  if [ "$TERM = screen" ]; then
+    name=`pwd`
+    echo -ne "\ek[$name]\e\\"
+  fi
+}
+      
 function precmd() {
   #gitブランチ表示用
   _set_env_git_current_branch
   _update_rprompt
+  #screenのwindow名を変更
+  #_set_window_name_pwd
 }
      
 function chpwd() {
@@ -100,6 +116,8 @@ function chpwd() {
   #gitブランチ表示用
   _set_env_git_current_branch
   _update_rprompt
+  #screenのwindow名を変更
+  #_set_window_name_pwd
 }
 
 #port searchに--lineオプション追加をデフォルトに
