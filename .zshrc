@@ -94,11 +94,21 @@ function _update_rprompt () {
   fi
 }
 
-#screenのwindows名を変更
-function _set_window_name_pwd () {
+#screenのwindows名にカレントディレクトリ名を表示
+function _set_window_name_pwd() {
   if [ "$TERM = screen" ]; then
-    name=`pwd`
-    echo -ne "\ek[$name]\e\\"
+    current=$(print -P "%~")
+    if [ $current = "~" ]; then
+      current='$HOME'
+    fi
+    echo -ne "\ek$(basename $current)\e\\"
+  fi
+}
+
+#screenのwindow名に現在実行中のコマンド名を表示
+function _set_window_name_cmd() {
+  if [ $TERM = "screen" ]; then
+    echo -ne "\ek$cmd\e\\"
   fi
 }
       
@@ -106,8 +116,14 @@ function precmd() {
   #gitブランチ表示用
   _set_env_git_current_branch
   _update_rprompt
-  #screenのwindow名を変更
-  #_set_window_name_pwd
+  #screenのwindow名にカレントディレクトリ名を表示
+  _set_window_name_pwd
+}
+
+function preexec() {
+  #screenのwindow名に現在実行中のコマンド名を表示
+  cmd=${1%% *}
+  _set_window_name_cmd
 }
      
 function chpwd() {
