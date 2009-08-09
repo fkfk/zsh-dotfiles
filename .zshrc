@@ -40,6 +40,7 @@ export PAGER='less'
 export XDG_DATA_DIRS=/opt/local/share
 export GISTY_DIR=$HOME/src/gists
 export RUBYOPT='-rubygems'
+export JAVA_OPTIONS="-Dfile.encoding=UTF-8" # MacのJDK6のデフォルトエンコーディングがSJISなのでその対策
 
 #jrubyディレクトリがあったらそれを追加
 #if test -d "/opt/jruby"; then
@@ -53,13 +54,17 @@ if test -d "/opt/flex3"; then
 fi
 
 #appengine-java-sdkがあったらそれを追加
-if test -d "/opt/appengine-java-sdk-1.2.0"; then
-  export PATH=$PATH:/opt/appengine-java-sdk-1.2.0/bin
+if test -d "/opt/appengine-java-sdk"; then
+  export PATH=$PATH:/opt/appengine-java-sdk/bin
 fi
 
 if test -d "$HOME/.gem/"; then
   GEM_BIN_DIR=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$HOME/.gem/jruby/1.8/bin
   export PATH=$PATH:$GEM_BIN_DIR
+fi
+
+if test -d "/opt/android-sdk"; then
+  export PATH=$PATH:/opt/android-sdk/tools
 fi
 
 #alias設定
@@ -96,10 +101,13 @@ function _update_rprompt () {
 
 #screenのwindows名にカレントディレクトリ名を表示
 function _set_window_name_pwd() {
-  if [ "$TERM = screen" ]; then
+  if [ $TERM = "screen" ]; then
     current=$(print -P "%~")
     if [ $current = "~" ]; then
       current='$HOME'
+    fi
+    if [ "`git ls-files 2>/dev/null`" ]; then
+      current="$current:$GIT_CURRENT_BRANCH"
     fi
     echo -ne "\ek$(basename $current)\e\\"
   fi
