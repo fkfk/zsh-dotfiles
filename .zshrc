@@ -202,3 +202,8 @@ function port() {
 function lvc() {
   source-highlight -f esc -o STDOUT $1 | lv -c
 }
+
+# rvm-install added line:
+if [[ -s $HOME/.rvm/scripts/rvm ]] ; then
+  source $HOME/.rvm/scripts/rvm
+fi
