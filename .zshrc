@@ -72,6 +72,27 @@ if test -d $GOROOT; then
   export PATH=$PATH:$GOBIN
 fi
 
+GEM_BIN_DIR=""
+if [ "`gem -v 2>/dev/null`" ]; then
+  export PATH=$PATH:`gem env gempath`
+fi
+
+if [ "`gem1.9.1 -v 2>/dev/null`" ]; then
+  export PATH=$PATH:`gem1.9.1 env gempath`
+fi
+
+if [ "`gem1.8 -v 2>/dev/null`" ]; then
+  export PATH=$PATH:`gem1.8 env gempath`
+fi
+
+if [ "`gem1.9 -v 2> /dev/null`" ];then
+  export PATH=$PATH:`gem1.9 env gempath`
+fi
+
+if [ "`jgem -v 2> /dev/null`" ];then
+  export PATH=$PATH:`jgem env gempath`
+fi
+
 #jrubyディレクトリがあったらそれを追加
 #if test -d "/opt/jruby"; then
 #  export JRUBY_HOME=/opt/jruby
@@ -86,11 +107,6 @@ fi
 #appengine-java-sdkがあったらそれを追加
 if test -d "/opt/appengine-java-sdk"; then
   export PATH=$PATH:/opt/appengine-java-sdk/bin
-fi
-
-if test -d "$HOME/.gem/"; then
-  GEM_BIN_DIR=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$HOME/.gem/jruby/1.8/bin
-  export PATH=$PATH:$GEM_BIN_DIR
 fi
 
 if test -d "/opt/android-sdk"; then
