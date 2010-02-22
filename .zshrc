@@ -74,24 +74,25 @@ fi
 
 GEM_BIN_DIR=""
 if [ "`gem -v 2>/dev/null`" ]; then
-  export PATH=$PATH:`gem env gempath`
+  export PATH=$PATH:`ruby -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
 fi
 
 if [ "`gem1.9.1 -v 2>/dev/null`" ]; then
-  export PATH=$PATH:`gem1.9.1 env gempath`
+  export PATH=$PATH:`ruby1.9.1 -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
 fi
 
 if [ "`gem1.8 -v 2>/dev/null`" ]; then
-  export PATH=$PATH:`gem1.8 env gempath`
+  export PATH=$PATH:`ruby1.8 -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
 fi
 
 if [ "`gem1.9 -v 2> /dev/null`" ];then
-  export PATH=$PATH:`gem1.9 env gempath`
+  export PATH=$PATH:`ruby1.9 -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
 fi
 
-if [ "`jgem -v 2> /dev/null`" ];then
-  export PATH=$PATH:`jgem env gempath`
-fi
+# jrubyのせいでshell起動が遅くなっているため一旦消しとく
+#if [ "`jgem -v 2> /dev/null`" ];then
+#  export PATH=$PATH:`jgem env gempath`
+#fi
 
 #jrubyディレクトリがあったらそれを追加
 #if test -d "/opt/jruby"; then
