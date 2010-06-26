@@ -11,6 +11,7 @@ source $HOME/.zsh/scripts/merb-gen.sh
 source $HOME/.zsh/scripts/rake.sh
 source $HOME/.zsh/scripts/capistrano.sh
 source $HOME/.zsh/scripts/sub.sh
+source $HOME/.zsh/scripts/psgrep.sh
 
 setopt auto_pushd
 setopt hist_ignore_dups
