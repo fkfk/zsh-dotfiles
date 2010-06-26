@@ -192,14 +192,6 @@ function chpwd() {
   #_set_window_name_pwd
 }
 
-#port searchに--lineオプション追加をデフォルトに
-function port() {
-  case $1 in
-    search) /opt/local/bin/port search --line $2;;
-    *) /opt/local/bin/port $*;;
-  esac
-}
-
 #source-highlightを通してlvをsyntax highlight対応させる
 function lvc() {
   source-highlight -f esc -o STDOUT $1 | lv -c
