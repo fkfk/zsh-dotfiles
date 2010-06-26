@@ -32,16 +32,11 @@ esac
 
 #環境変数セット
 export LANG=ja_JP.UTF-8
-export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:$PATH
-export MANPATH=/opt/local/man:$MANPATH
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 export PAGER='less'
-export XDG_DATA_DIRS=/opt/local/share
 export GISTY_DIR=$HOME/src/gists
 export RUBYOPT='-rubygems'
-export JAVA_OPTIONS="-Dfile.encoding=UTF-8" # MacのJDK6のデフォルトエンコーディングがSJISなのでその対策
 
 #Go用の設定
 export GOROOT=/opt/go
@@ -73,7 +68,6 @@ if test -d $GOROOT; then
   export PATH=$PATH:$GOBIN
 fi
 
-GEM_BIN_DIR=""
 if [ "`gem -v 2>/dev/null`" ]; then
   export PATH=$PATH:`ruby -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
 fi
@@ -95,26 +89,6 @@ fi
 #  export PATH=$PATH:`jgem env gempath`
 #fi
 
-#jrubyディレクトリがあったらそれを追加
-#if test -d "/opt/jruby"; then
-#  export JRUBY_HOME=/opt/jruby
-#  export PATH=$PATH:$JRUBY_HOME/bin
-#fi
-
-#flex3ディレクトリがあったらそれを追加
-if test -d "/opt/flex3"; then
-  export PATH=$PATH:/opt/flex3/bin
-fi
-
-#appengine-java-sdkがあったらそれを追加
-if test -d "/opt/appengine-java-sdk"; then
-  export PATH=$PATH:/opt/appengine-java-sdk/bin
-fi
-
-if test -d "/opt/android-sdk"; then
-  export PATH=$PATH:/opt/android-sdk/tools
-fi
-
 #alias設定
 alias ll='ls -l'
 alias la='ls -a'
@@ -125,10 +99,6 @@ alias :wq='screen -d'
 alias :e='screen -r'
 alias reload='exec zsh'
 alias sqlite='sqlite3'
-
-if test -e "/opt/local/bin/gnutar"; then
-  alias tar='gnutar'
-fi
 
 #viモード
 bindkey -v
@@ -161,13 +131,6 @@ function _set_window_name_pwd() {
   fi
 }
 
-#screenのwindow名に現在実行中のコマンド名を表示
-function _set_window_name_cmd() {
-  if [ $TERM = "screen" ]; then
-    echo -ne "\ek$cmd\e\\"
-  fi
-}
-      
 function precmd() {
   #gitブランチ表示用
   _set_env_git_current_branch
@@ -176,12 +139,6 @@ function precmd() {
   _set_window_name_pwd
 }
 
-function preexec() {
-  #screenのwindow名に現在実行中のコマンド名を表示
-  cmd=${1%% *}
-  _set_window_name_cmd
-}
-     
 function chpwd() {
   #cdd用
   _reg_pwd_screennum
@@ -189,7 +146,7 @@ function chpwd() {
   _set_env_git_current_branch
   _update_rprompt
   #screenのwindow名を変更
-  #_set_window_name_pwd
+  _set_window_name_pwd
 }
 
 #source-highlightを通してlvをsyntax highlight対応させる
