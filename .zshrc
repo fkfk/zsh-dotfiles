@@ -36,7 +36,6 @@ export EDITOR='vim'
 export GIT_EDITOR='vim'
 export PAGER='less'
 export GISTY_DIR=$HOME/src/gists
-export RUBYOPT='-rubygems'
 
 #Go用の設定
 export GOROOT=/opt/go
@@ -67,27 +66,6 @@ if test -d $GOROOT; then
   export GOBIN=$GOROOT/bin
   export PATH=$PATH:$GOBIN
 fi
-
-if [ "`gem -v 2>/dev/null`" ]; then
-  export PATH=$PATH:`ruby -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
-fi
-
-if [ "`gem1.9.1 -v 2>/dev/null`" ]; then
-  export PATH=$PATH:`ruby1.9.1 -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
-fi
-
-if [ "`gem1.8 -v 2>/dev/null`" ]; then
-  export PATH=$PATH:`ruby1.8 -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
-fi
-
-if [ "`gem1.9 -v 2> /dev/null`" ];then
-  export PATH=$PATH:`ruby1.9 -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`
-fi
-
-# jrubyのせいでshell起動が遅くなっているため一旦消しとく
-#if [ "`jgem -v 2> /dev/null`" ];then
-#  export PATH=$PATH:`jgem env gempath`
-#fi
 
 #alias設定
 alias ll='ls -l'
@@ -153,8 +131,3 @@ function chpwd() {
 function lvc() {
   source-highlight -f esc -o STDOUT $1 | lv -c
 }
-
-# rvm-install added line:
-if [[ -s $HOME/.rvm/scripts/rvm ]] ; then
-  source $HOME/.rvm/scripts/rvm
-fi
