@@ -126,8 +126,3 @@ function chpwd() {
   #screenのwindow名を変更
   _set_window_name_pwd
 }
-
-#source-highlightを通してlvをsyntax highlight対応させる
-function lvc() {
-  source-highlight -f esc -o STDOUT $1 | lv -c
-}
