@@ -56,8 +56,8 @@ function _set_env_git_current_branch() {
   GIT_CURRENT_BRANCH=$( git branch 2> /dev/null | grep '^\*' | cut -b 3- )
 }
 
-#gitブランチ内の場合に右プロンプトにgitブランチ名を表示
 function _update_rprompt () {
+  #gitブランチ内の場合に右プロンプトにgitブランチ名を表示
   if [ "`git ls-files 2>/dev/null`" ]; then
     RPROMPT="%{[32m%}[%/:$GIT_CURRENT_BRANCH]%{[m%}"
   else
@@ -65,8 +65,8 @@ function _update_rprompt () {
   fi
 }
 
-#screenのwindows名にカレントディレクトリ名を表示
 function _set_window_name_pwd() {
+  #screenのwindows名にカレントディレクトリ名を表示
   if [ $TERM = "screen" ]; then
     current=$(print -P "%~")
     if [ $current = "~" ]; then
