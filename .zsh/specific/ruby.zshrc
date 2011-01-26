@@ -1,5 +1,5 @@
 # 環境変数セット
-export RUBYOPT='-rubygems'
+#export RUBYOPT='-rubygems'
 
 # rubygemsのbinをPATHに追加
 if [ "`gem -v 2>/dev/null`" ]; then

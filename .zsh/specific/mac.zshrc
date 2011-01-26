@@ -1,3 +1,6 @@
+# カレントディレクトリの絶対パスをクリップボードにコピー
+source $HOME/.zsh/scripts/pwdcopy.zsh
+
 #MacPortsの設定
 export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
@@ -6,6 +9,9 @@ export XDG_DATA_DIRS=/opt/local/share
 
 # MacのJDK6のデフォルトエンコーディングがSJISなのでその対策
 export JAVA_OPTIONS="-Dfile.encoding=UTF-8" 
+
+# cddの設定
+export CDD_PWD_FILE=$HOME/.cdd_pwd_list
 
 #flex3ディレクトリがあったらそれを追加
 if test -d "/opt/flex3"; then

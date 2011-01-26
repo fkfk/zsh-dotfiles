@@ -1,0 +1,3 @@
+function pwdcopy(){
+  pwd | pbcopy
+}

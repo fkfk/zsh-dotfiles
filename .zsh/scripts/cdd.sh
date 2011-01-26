@@ -40,7 +40,11 @@
 # - Yuichi Tateno
 #
 
-export CDD_PWD_FILE=$HOME/.zsh/cdd_pwd_list
+#export CDD_PWD_FILE=$HOME/.zsh/cdd_pwd_list
+# 他設定ファイルから設定できるように
+if [ -z "$CDD_PWD_FILE" ]; then
+  export CDD_PWD_FILE=$HOME/.zsh/cdd_pwd_list
+fi
 
 function _reg_pwd_screennum() {
   if [ "$STY" != "" ]; then
