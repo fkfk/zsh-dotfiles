@@ -50,6 +50,9 @@ alias sqlite='sqlite3'
 
 #viモード
 bindkey -v
+#viモード時にインサート位置を超えて削除が可能なように設定
+zle -A .backward-kill-word vi-backward-kill-word
+zle -A .backward-delete-char vi-backward-delete-char
 
 #gitブランチ名取得
 function _set_env_git_current_branch() {
