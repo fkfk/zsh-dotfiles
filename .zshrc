@@ -20,15 +20,10 @@ setopt correct
 
 unset PS1
 
-case "${TERM}" in
-  #MacVimで:shしたときの最低限のプロンプト設定
-  dumb)
-    PROMPT="> "
-  ;;
-  *) 
-    PROMPT="%{[32m%}>%{[m%}%{[m%} "
-  ;;
-esac
+# cddの設定
+export CDD_PWD_FILE=$HOME/.cdd_pwd_list
+
+PROMPT="%{[32m%}>%{[m%}%{[m%} "
 
 #環境変数セット
 export LANG=ja_JP.UTF-8

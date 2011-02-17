@@ -11,9 +11,6 @@ export XDG_DATA_DIRS=/opt/local/share
 # MacのJDK6のデフォルトエンコーディングがSJISなのでその対策
 export JAVA_OPTIONS="-Dfile.encoding=UTF-8" 
 
-# cddの設定
-export CDD_PWD_FILE=$HOME/.cdd_pwd_list
-
 #appengine-java-sdkがあったらそれを追加
 if test -d "/opt/appengine-java-sdk"; then
   export PATH=$PATH:/opt/appengine-java-sdk/bin
