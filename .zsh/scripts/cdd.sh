@@ -46,6 +46,10 @@ if [ -z "$CDD_PWD_FILE" ]; then
   export CDD_PWD_FILE=$HOME/.zsh/cdd_pwd_list
 fi
 
+if [ -n "$ENABLE_CDD" ]; then
+  push CHPWD_LIST "_reg_pwd_screennum"
+fi
+
 function _reg_pwd_screennum() {
   if [ "$STY" != "" ]; then
     if [ ! -f "$CDD_PWD_FILE" ]; then

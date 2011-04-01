@@ -1,3 +1,4 @@
+_LOADED_SPECIFIC_RUBY=1
 # rubygemsのbinをPATHに追加
 if [ "`gem -v 2>/dev/null`" ]; then
   export PATH=$PATH:`ruby -rubygems -e "puts Gem.path.map{|path| \"#{path}/bin\"}.join(':')"`

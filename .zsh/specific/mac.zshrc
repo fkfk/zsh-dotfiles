@@ -1,6 +1,4 @@
-# カレントディレクトリの絶対パスをクリップボードにコピー
-source $HOME/.zsh/scripts/pwdcopy.zsh
-
+_LOADED_SPECIFIC_MAC=1
 #MacPortsの設定
 # /etc/paths に追記して運用中なのでしばらくコメントアウト
 #export PATH=/opt/local/bin:/opt/local/sbin/:/usr/local/bin:$PATH

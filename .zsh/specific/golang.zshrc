@@ -1,3 +1,4 @@
+_LOADED_SPECIFIC_GOLANG=1
 #Go用の設定
 export GOROOT=/opt/go
 if test -d $GOROOT; then
