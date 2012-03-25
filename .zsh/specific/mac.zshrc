@@ -15,8 +15,11 @@ if test -d "/opt/appengine-java-sdk"; then
 fi
 
 #android-sdkがあったらそれを追加
-if test -d "/opt/android-sdk"; then
-  export PATH=$PATH:/opt/android-sdk/tools
+#MacPortsで入れていたらそれを、入れていなければ手動で導入しているものを追加
+if test -d "/opt/local/share/java/android-sdk-mac_x86"; then
+  export PATH=$PATH:/opt/local/share/java/android-sdk-mac_x86/tools:/opt/local/share/java/android-sdk-mac_x86/platform-tools
+elif test -d "/opt/android-sdk"; then
+  export PATH=$PATH:/opt/android-sdk/tools:/opt/android-sdk/platform-tools
 fi
 
 #gnutarがあったらtarと置き換え
