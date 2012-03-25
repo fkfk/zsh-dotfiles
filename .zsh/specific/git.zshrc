@@ -7,6 +7,10 @@ push CHPWD_LIST "_update_rprompt_git_repo"
 export GIT_EDITOR='vim'
 export GISTY_DIR=$HOME/src/gists
 
+if [ -s "$HOME/.ssl/cacert.pem" ]; then
+  export GISTY_SSL_CA=$HOME/.ssl/cacert.pem
+fi
+
 #gitブランチ名取得
 function _set_env_git_current_branch() {
   GIT_CURRENT_BRANCH=$( git branch 2> /dev/null | grep '^\*' | cut -b 3- )
