@@ -21,6 +21,15 @@ unset PS1
 export CDD_PWD_FILE=$HOME/.cdd_pwd_list
 export ENABLE_CDD=1
 
+# RPROMPTの設定
+if [ $TMUX ]; then
+  export ENABLE_RPROMPT_PATH=0
+  export ENABLE_WINDOW_NAME_PWD=1
+  unset RPROMPT
+else
+  export ENABLE_RPROMPT_PATH=1
+fi
+
 PROMPT="%{[32m%}>%{[m%}%{[m%} "
 if [ $ENABLE_RPROMPT_PATH -eq 1 ]; then
   RPROMPT="%{[32m%}[%/]%{[m%}"
