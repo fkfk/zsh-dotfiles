@@ -22,7 +22,9 @@ export CDD_PWD_FILE=$HOME/.cdd_pwd_list
 export ENABLE_CDD=1
 
 PROMPT="%{[32m%}>%{[m%}%{[m%} "
-RPROMPT="%{[32m%}[%/]%{[m%}"
+if [ $ENABLE_RPROMPT_PATH -eq 1 ]; then
+  RPROMPT="%{[32m%}[%/]%{[m%}"
+fi
 
 #環境変数セット
 export LANG=ja_JP.UTF-8
