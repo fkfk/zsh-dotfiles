@@ -1,6 +1,5 @@
 _LOADED_SPECIFIC_SCREEN=1
-push PRECMD_LIST "_set_window_name_pwd"
-push CHPWD_LIST "_set_window_name_pwd"
+add-zsh-hook chpwd _set_window_name_pwd
 
 function _set_window_name_pwd() {
   if [ $TERM = "screen" ]; then

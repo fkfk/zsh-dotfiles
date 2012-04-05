@@ -1,8 +1,6 @@
 _LOADED_SPECIFIC_GIT=1
-unshift PRECMD_LIST "_set_env_git_current_branch"
-push PRECMD_LIST "_update_rprompt_git_repo"
-unshift CHPWD_LIST "_set_env_git_current_branch"
-push CHPWD_LIST "_update_rprompt_git_repo"
+add-zsh-hook chpwd _set_env_git_current_branch
+add-zsh-hook chpwd _update_rprompt_git_repo
 
 export GIT_EDITOR='vim'
 export GISTY_DIR=$HOME/src/gists

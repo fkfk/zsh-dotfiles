@@ -4,6 +4,8 @@ compinit
 autoload -U colors
 colors
 
+autoload -Uz add-zsh-hook
+
 # 必須functionのロード
 export ADD_FUNC_DIR=$HOME/.zsh/scripts
 source $ADD_FUNC_DIR/array_fnc.sh # 後述の組み込み関数でarray_fnc.sh内で定義した関数が必須となる
@@ -14,10 +16,6 @@ setopt list_packed
 setopt correct
 
 unset PS1
-
-# 組み込み関数で使う変数
-PRECMD_LIST=()
-CHPWD_LIST=()
 
 # cddの設定
 export CDD_PWD_FILE=$HOME/.cdd_pwd_list
@@ -47,15 +45,3 @@ bindkey -v
 #viモード時にインサート位置を超えて削除が可能なように設定
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
-
-function precmd(){
-  for cmd in $PRECMD_LIST; do
-    eval $cmd
-  done
-}
-
-function chpwd(){
-  for cmd in $CHPWD_LIST; do
-    eval $cmd
-  done
-}

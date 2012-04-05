@@ -47,7 +47,7 @@ if [ -z "$CDD_PWD_FILE" ]; then
 fi
 
 if [ -n "$ENABLE_CDD" ]; then
-  push CHPWD_LIST "_reg_pwd_screennum"
+  add-zsh-hook chpwd _reg_pwd_screennum
 fi
 
 function _reg_pwd_screennum() {
