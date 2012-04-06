@@ -26,5 +26,6 @@ if test -d $GOROOT; then
     ;;
   esac
   export GOBIN=$GOROOT/bin
-  export PATH=$PATH:$GOBIN
+  push path $GOBIN
+  export PATH
 fi

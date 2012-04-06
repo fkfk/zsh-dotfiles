@@ -11,15 +11,20 @@ export JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
 #appengine-java-sdkがあったらそれを追加
 if test -d "/opt/appengine-java-sdk"; then
-  export PATH=$PATH:/opt/appengine-java-sdk/bin
+  push path /opt/appengine-java-sdk/bin
+  export PATH
 fi
 
 #android-sdkがあったらそれを追加
 #MacPortsで入れていたらそれを、入れていなければ手動で導入しているものを追加
 if test -d "/opt/local/share/java/android-sdk-mac_x86"; then
-  export PATH=$PATH:/opt/local/share/java/android-sdk-mac_x86/tools:/opt/local/share/java/android-sdk-mac_x86/platform-tools
+  push path /opt/local/share/java/android-sdk-mac_x86/tools
+  push path /opt/local/share/java/android-sdk-mac_x86/platform-tools
+  export PATH
 elif test -d "/opt/android-sdk"; then
-  export PATH=$PATH:/opt/android-sdk/tools:/opt/android-sdk/platform-tools
+  push path /opt/android-sdk/tools
+  push path /opt/android-sdk/platform-tools
+  export PATH
 fi
 
 #gnutarがあったらtarと置き換え

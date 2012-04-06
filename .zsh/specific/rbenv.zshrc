@@ -1,4 +1,16 @@
 _LOADED_SPECIFIC_RBENV=1
-PATH+=":$HOME/.rbenv/bin"
-export PATH
-eval "$(rbenv init -)"
+if [ $RBENV_ROOT ]; then
+  push path $RBENV_ROOT/bin
+  export PATH
+  eval "$(rbenv init -)"
+elif [ -d /usr/local/rbenv ]; then
+  export RBENV_ROOT="/usr/local/rbenv"
+  push path /usr/local/rbenv/bin
+  export PATH
+  eval "$(rbenv init -)"
+elif [ -d $HOME/.rbenv ]; then
+  export RBENV_ROOT="$HOME/.rbenv/rbenv"
+  push path $HOME/.rbenv/bin
+  export PATH
+  eval "$(rbenv init -)"
+fi
