@@ -62,6 +62,10 @@ zle -A .backward-delete-char vi-backward-delete-char
 zle -N edit-command-line
 bindkey '^Ee' edit-command-line
 
+# クオート
+bindkey '^Xq' quote-line
+bindkey '^XQ' quote-region
+
 # ディレクトリ移動のbind
 source $HOME/.zsh/scripts/cd_fnc.sh
 zle -N cd-up
