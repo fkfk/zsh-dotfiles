@@ -56,3 +56,10 @@ bindkey -v
 #viモード時にインサート位置を超えて削除が可能なように設定
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
+
+# ディレクトリ移動のbind
+source $HOME/.zsh/scripts/cd_fnc.sh
+zle -N cd-up
+zle -N cd-last
+bindkey '^X\^' cd-up
+bindkey '^X\-' cd-last
