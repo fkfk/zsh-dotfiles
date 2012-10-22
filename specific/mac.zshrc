@@ -40,3 +40,6 @@ function port() {
   esac
 }
 
+function volume() {
+  osascript -e "set volume $1"
+}
