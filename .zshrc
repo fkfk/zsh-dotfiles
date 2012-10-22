@@ -5,6 +5,7 @@ autoload -U colors
 colors
 
 autoload -Uz add-zsh-hook
+autoload -U edit-command-line
 
 # 必須functionのロード
 export ADD_FUNC_DIR=$HOME/.zsh/scripts
@@ -56,6 +57,10 @@ bindkey -v
 #viモード時にインサート位置を超えて削除が可能なように設定
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
+
+# コマンドラインをエディタで編集する
+zle -N edit-command-line
+bindkey '^Ee' edit-command-line
 
 # ディレクトリ移動のbind
 source $HOME/.zsh/scripts/cd_fnc.sh
