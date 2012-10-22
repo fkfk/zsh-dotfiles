@@ -9,10 +9,11 @@ autoload -U edit-command-line
 
 
 # 必須functionのロード
-basedir=`dirname \`readlink -f $0\``
-export SCRIPTS_DIR=$basedir/scripts
-export SPECIFIC_DIR=$basedir/specific
-source $SCRIPTS_DIR/array_fnc.sh # 後述の組み込み関数でarray_fnc.sh内で定義した関数が必須となる
+ZSHRC_BASEDIR=`dirname \`readlink -f $0\``
+export SCRIPTS_DIR=$ZSHRC_BASEDIR/scripts
+export SPECIFIC_DIR=$ZSHRC_BASEDIR/specific
+source $SCRIPTS_DIR/load_fnc.sh # 独自定義関数群・環境設定を読み込む関数を定義
+load_script array_fnc # 後述の組み込み関数でarray_fnc.sh内で定義した関数が必須となる
 
 setopt auto_pushd
 setopt hist_ignore_dups
