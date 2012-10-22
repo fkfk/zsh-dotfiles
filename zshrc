@@ -9,7 +9,18 @@ autoload -U edit-command-line
 
 
 # 必須functionのロード
-ZSHRC_BASEDIR=`dirname \`readlink -f $0\``
+if [ "`uname 2>/dev/null`" = "Darwin" -a "`grealpath --help 2>/dev/null`" ]; then
+  cmd=grealpath
+elif [ "`realpath --help 2> /dev/null`" ]; then
+  cmd=realpath
+else
+  function _realpath() {
+    echo $(cd $(dirname $1); pwd -P)
+  }
+  cmd=_realpath
+fi
+ZSHRC_BASEDIR=`dirname \`${cmd} $0\``
+unset cmd
 export SCRIPTS_DIR=$ZSHRC_BASEDIR/scripts
 export SPECIFIC_DIR=$ZSHRC_BASEDIR/specific
 source $SCRIPTS_DIR/load_fnc.sh # 独自定義関数群・環境設定を読み込む関数を定義
