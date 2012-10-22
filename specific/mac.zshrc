@@ -17,9 +17,9 @@ fi
 
 #android-sdkがあったらそれを追加
 #MacPortsで入れていたらそれを、入れていなければ手動で導入しているものを追加
-if test -d "/opt/local/share/java/android-sdk-mac_x86"; then
-  push path /opt/local/share/java/android-sdk-mac_x86/tools
-  push path /opt/local/share/java/android-sdk-mac_x86/platform-tools
+if test -d "/opt/local/share/java/android-sdk-macosx"; then
+  push path /opt/local/share/java/android-sdk-macosx/tools
+  push path /opt/local/share/java/android-sdk-macosx/platform-tools
   export PATH
 elif test -d "/opt/android-sdk"; then
   push path /opt/android-sdk/tools
