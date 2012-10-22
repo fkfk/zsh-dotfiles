@@ -1,6 +1,6 @@
 _LOADED_SPECIFIC_RUBY=1
 if [ ! $_LOADED_SCRIPT_RUBYGEMS_PATH ]; then
-  source $ADD_FUNC_DIR/rubygems_path.sh
+  source $SCRIPTS_DIR/rubygems_path.sh
 fi
 # rubygemsのbinをPATHに追加
 if [ "`gem -v 2>/dev/null`" ]; then

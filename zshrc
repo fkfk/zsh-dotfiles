@@ -7,9 +7,12 @@ colors
 autoload -Uz add-zsh-hook
 autoload -U edit-command-line
 
+
 # 必須functionのロード
-export ADD_FUNC_DIR=$HOME/.zsh/scripts
-source $ADD_FUNC_DIR/array_fnc.sh # 後述の組み込み関数でarray_fnc.sh内で定義した関数が必須となる
+basedir=`dirname \`readlink -f $0\``
+export SCRIPTS_DIR=$basedir/scripts
+export SPECIFIC_DIR=$basedir/specific
+source $SCRIPTS_DIR/array_fnc.sh # 後述の組み込み関数でarray_fnc.sh内で定義した関数が必須となる
 
 setopt auto_pushd
 setopt hist_ignore_dups
@@ -67,10 +70,10 @@ bindkey '^Xq' quote-line
 bindkey '^XQ' quote-region
 
 # viモードの表示
-source $ADD_FUNC_DIR/vi_mode_status_bar.sh
+source $SCRIPTS_DIR/vi_mode_status_bar.sh
 
 # ディレクトリ移動のbind
-source $HOME/.zsh/scripts/cd_fnc.sh
+source $SCRIPTS_DIR/cd_fnc.sh
 zle -N cd-up
 zle -N cd-last
 bindkey '^X\^' cd-up
