@@ -9,7 +9,7 @@ elif [ -d /usr/local/rbenv ]; then
   export PATH
   eval "$(rbenv init -)"
 elif [ -d $HOME/.rbenv ]; then
-  export RBENV_ROOT="$HOME/.rbenv/rbenv"
+  export RBENV_ROOT="$HOME/.rbenv"
   push path $HOME/.rbenv/bin
   export PATH
   eval "$(rbenv init -)"
