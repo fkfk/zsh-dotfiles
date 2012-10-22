@@ -66,6 +66,9 @@ bindkey '^Ee' edit-command-line
 bindkey '^Xq' quote-line
 bindkey '^XQ' quote-region
 
+# viモードの表示
+source $ADD_FUNC_DIR/vi_mode_status_bar.sh
+
 # ディレクトリ移動のbind
 source $HOME/.zsh/scripts/cd_fnc.sh
 zle -N cd-up
