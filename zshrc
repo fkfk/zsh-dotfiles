@@ -15,7 +15,7 @@ elif [ "`realpath --help 2> /dev/null`" ]; then
   cmd=realpath
 else
   function _realpath() {
-    echo $(cd $(dirname $1); pwd -P)
+    echo $(cd $(dirname $1); pwd -P)/$(basename $1)
   }
   cmd=_realpath
 fi
