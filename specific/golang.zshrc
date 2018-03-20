@@ -1,7 +1,7 @@
 _LOADED_SPECIFIC_GOLANG=1
 #Go用の設定
-export GOROOT=/opt/go
-if test -d $GOROOT; then
+export GOPATH=$HOME/go
+if test -d $GOPATH; then
   # $GOOSの判別用
   case `uname` in
     Darwin)
@@ -14,7 +14,7 @@ if test -d $GOROOT; then
     ;;
   esac
   # $GOARCHの判別用/x86_64は未テスト
-  case `uname -p` in
+  case `uname -m` in
     x86_64)
       export GOARCH=amd64
     ;;
@@ -25,7 +25,7 @@ if test -d $GOROOT; then
       export GOARCH=386
     ;;
   esac
-  export GOBIN=$GOROOT/bin
+  export GOBIN=$GOPATH/bin
   push path $GOBIN
   export PATH
 fi
